@@ -1,7 +1,13 @@
-import logo from './logo.svg';
-import './App.css';
-
+import logo from "./logo.svg";
+import "./App.css";
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { getCatalogue, getNowPlaying } from "redux/MovieReducer";
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => dispatch(getNowPlaying()), []);
+  useEffect(() => dispatch(getCatalogue()), []);
   return (
     <div className="App">
       <header className="App-header">
