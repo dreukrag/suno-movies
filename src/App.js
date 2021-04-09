@@ -1,29 +1,16 @@
-import logo from "./logo.svg";
 import "./App.css";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { getCatalogue, getNowPlaying } from "redux/MovieReducer";
+import Header from "components/Header";
 function App() {
   const dispatch = useDispatch();
 
-  useEffect(() => dispatch(getNowPlaying()), []);
-  useEffect(() => dispatch(getCatalogue()), []);
+  useEffect(() => dispatch(getNowPlaying()), [dispatch]);
+  useEffect(() => dispatch(getCatalogue()), [dispatch]);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Header />
     </div>
   );
 }
