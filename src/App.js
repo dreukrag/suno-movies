@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { getCatalogue, getNowPlaying } from "redux/MovieReducer";
 import Header from "components/Header";
+import Featured from "components/Featured";
 function App() {
   const dispatch = useDispatch();
 
@@ -11,6 +12,7 @@ function App() {
   return (
     <div>
       <Header />
+      <Featured />
     </div>
   );
 }

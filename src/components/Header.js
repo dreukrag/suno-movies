@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { HeaderButton, SearchButton } from "./Buttons";
+import { FlexContent } from "./Commons";
 import searchIcon from "./search-outline 1.svg";
 const Hdr = styled.header`
   background: #212125;
@@ -9,14 +10,6 @@ const Hdr = styled.header`
   display: flex;
   justify-content: center;
   height: 107px;
-`;
-
-const Content = styled.div`
-  display: flex;
-  max-width: 1024px;
-  width: 100%;
-  justify-content: space-between;
-  align-items: center;
 `;
 
 const HdrText = styled.span`
@@ -55,10 +48,10 @@ const ButtonWrapper = styled.div`
 
 const Header = (props) => (
   <Hdr>
-    <Content>
+    <FlexContent>
       <h2>
-        <HdrText>Suno</HdrText>
-        <HdrBright>Movies</HdrBright>
+        <HdrText>Suno <HdrBright>Movies</HdrBright></HdrText>
+        
       </h2>
       <ButtonWrapper>
         <HeaderButton>Início</HeaderButton>
@@ -67,7 +60,7 @@ const Header = (props) => (
           <img src={searchIcon} alt="search" />
         </SearchButton>
       </ButtonWrapper>
-    </Content>
+    </FlexContent>
   </Hdr>
 );
 

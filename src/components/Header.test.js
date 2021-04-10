@@ -2,6 +2,10 @@ import { render, fireEvent, screen } from "@testing-library/react";
 import Header from "./Header";
 
 describe("Header tests", () => {
+  test("Render without crashing", () => {
+    render(<Header />);
+    expect(screen).toBeDefined();
+  });
   test("Should have a header", () => {
     render(<Header />);
     screen.getByRole("banner");
