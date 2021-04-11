@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Ball, Content, Heading, TitleText, TitleTextBold } from "./Commons";
+import { Ball, Colors, Content, Heading, TitleText, TitleTextBold } from "./Commons";
 import backgroundImage from "components/assets/background.png";
 import { Carousel, CarouselMovieCard } from "./Carousel";
 import { useSelector } from "react-redux";
@@ -11,7 +11,7 @@ const Background = styled.div`
   height: 720px;
   background-position: center;
   display: flex;
-  border-bottom: solid 3px #fe3189;
+  border-bottom: solid 3px ${Colors.pink};
 `;
 
 const Featured = () => {

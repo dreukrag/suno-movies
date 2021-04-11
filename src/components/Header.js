@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useCallback } from "react";
 import styled from "styled-components";
 import { HeaderButton, SearchButton } from "./Buttons";
-import { FlexContent } from "./Commons";
+import { Colors, FlexContent } from "./Commons";
 import searchIcon from "components/assets/search-outline 1.svg";
 const Hdr = styled.header`
-  background: #212125;
+  background: ${Colors.dark};
   mix-blend-mode: normal;
   box-shadow: 0px 4px 25px 4px rgba(0, 0, 0, 0.3);
   display: flex;
@@ -46,22 +46,35 @@ const ButtonWrapper = styled.div`
   display: flex;
 `;
 
-const Header = (props) => (
-  <Hdr>
-    <FlexContent>
-      <h2>
-        <HdrText>Suno <HdrBright>Movies</HdrBright></HdrText>
-        
-      </h2>
-      <ButtonWrapper>
-        <HeaderButton>Início</HeaderButton>
-        <HeaderButton>Catálogo</HeaderButton>
-        <SearchButton>
-          <img src={searchIcon} alt="search" />
-        </SearchButton>
-      </ButtonWrapper>
-    </FlexContent>
-  </Hdr>
-);
+const Header = (props) => {
+  const scroll = useCallback(
+    () =>
+      document.getElementById("subheader").scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+        inline: "nearest",
+      }),
+    []
+  );
+
+  return (
+    <Hdr>
+      <FlexContent>
+        <h2>
+          <HdrText>
+            Suno <HdrBright>Movies</HdrBright>
+          </HdrText>
+        </h2>
+        <ButtonWrapper>
+          <HeaderButton>Início</HeaderButton>
+          <HeaderButton onClick={scroll}>Catálogo</HeaderButton>
+          <SearchButton>
+            <img src={searchIcon} alt="search" />
+          </SearchButton>
+        </ButtonWrapper>
+      </FlexContent>
+    </Hdr>
+  );
+};
 
 export default Header;

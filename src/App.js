@@ -3,9 +3,9 @@ import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { getCatalogue, getGenres, getNowPlaying } from "redux/MovieReducer";
 import Header from "components/Header";
-import SubHeader from "components/SubHeader";
 import Featured from "components/Featured";
 import Footer from "components/Footer";
+import Catalogue from "components/Catalogue";
 function App() {
   const dispatch = useDispatch();
 
@@ -16,7 +16,7 @@ function App() {
     <div>
       <Header />
       <Featured />
-      <SubHeader />
+      <Catalogue />
       <Footer />
     </div>
   );

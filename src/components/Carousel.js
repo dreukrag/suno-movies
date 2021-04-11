@@ -2,7 +2,7 @@ import { useMemo, useReducer } from "react";
 import styled from "styled-components";
 import chevron_right from "components/assets/chevron_right.svg";
 import chevron_left from "components/assets/chevron_left.svg";
-import { Star } from "components/Commons";
+import { Colors, Star } from "components/Commons";
 import { useSelector } from "react-redux";
 const MovieCardWrapper = styled.div`
   display: flex;
@@ -39,7 +39,7 @@ const Genre = styled(Ellipsis)`
   font-size: 16px;
   line-height: 24px;
   min-height: 24px;
-  color: #fe3189;
+  color: ${Colors.pink};
 `;
 
 const Vote = styled(Ellipsis)`

@@ -1,6 +1,13 @@
 import styled from "styled-components";
 import star from "components/assets/star.svg";
 
+export const Colors = {
+  pink: "#fe3189",
+  dark: "#212125",
+  darker: "#1b1b1f",
+  darkest: "#18181c",
+};
+
 export const Heading = styled.h1`
   display: flex;
   align-items: center;
@@ -37,7 +44,7 @@ export const FlexContent = styled(Content)`
 `;
 
 export const Ball = styled.div`
-  background: #fe3189;
+  background: ${Colors.pink};
   border-radius: 100%;
   width: 15px;
   height: 15px;

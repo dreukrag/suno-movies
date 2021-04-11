@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { Colors } from "./Commons";
 
 const P = styled.p`
   margin: 0;
@@ -9,7 +10,7 @@ const P = styled.p`
 
 const F = styled.footer`
   height: 112px;
-  background: #18181c;
+  background: ${Colors.darkest};
   display: flex;
   justify-content: center;
   align-items: center;

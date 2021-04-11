@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Colors } from "./Commons";
 
 export const HeaderButton = styled.button`
   border: none;
@@ -22,10 +23,10 @@ export const HeaderButton = styled.button`
   color: #eaeaea;
 
   :hover {
-    border-bottom: 2px solid #fe3189;
+    border-bottom: 2px solid ${Colors.pink};
   }
   :active {
-    border-bottom: 2px solid #fe3189;
+    border-bottom: 2px solid ${Colors.pink};
   }
   :focus {
     outline: none;
