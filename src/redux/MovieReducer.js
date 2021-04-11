@@ -7,6 +7,7 @@ export const moviesStatus = {
   SUCCESSFULL: "MOVIES_SUCCESSFULL",
   INVALID: "MOVIES_INVALID",
   SERVERERROR: "MOVIES_SERVERERROR",
+  CHANGEFILTER: "MOVIES_CHANGE_FILTER",
 };
 
 export const movieReducerInitialState = {
@@ -159,6 +160,14 @@ export const getGenres = (listName, requestUrl) => {
 
 function MovieReducer(state = movieReducerInitialState, action) {
   switch (action.type) {
+    case moviesStatus.CHANGEFILTER:
+      return {
+        ...state,
+        filter: {
+          ...state.filter,
+          type: action.payload,
+        },
+      };
     case moviesStatus.START:
       return {
         ...state,
