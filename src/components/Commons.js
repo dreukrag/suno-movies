@@ -3,9 +3,12 @@ import star from "components/assets/star.svg";
 
 export const Colors = {
   pink: "#fe3189",
+  darkerPink: "#f10067",
+  grey: "#2e2d31",
   dark: "#212125",
   darker: "#1b1b1f",
   darkest: "#18181c",
+  light: "#eaeaea",
 };
 
 export const Heading = styled.h1`
