@@ -9,13 +9,16 @@ export const moviesStatus = {
   SERVERERROR: "MOVIES_SERVERERROR",
 };
 
-const initialState = {
+export const movieReducerInitialState = {
   nowPlaying: [],
   nowPlayingStatus: moviesStatus.INACTIVE,
   nowPlayingError: null,
   catalogue: [],
   catalogueStatus: moviesStatus.INACTIVE,
   catalogueError: null,
+  genres: [],
+  genresStatus: moviesStatus.INACTIVE,
+  genresError: null,
   filter: {
     type: "popular",
   },
@@ -105,7 +108,56 @@ export const getCatalogue = () => {
   };
 };
 
-function MovieReducer(state = initialState, action) {
+export const getGenres = (listName, requestUrl) => {
+  listName = "genres";
+  requestUrl = `https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}&language=pt-BR&region=BR`;
+
+  return async (dispatch) => {
+    dispatch({ type: moviesStatus.START, listName });
+    try {
+      const response = await Axios.get(requestUrl);
+
+      if (
+        Array.isArray(response.data.genres) &&
+        response.data.genres.length > 0
+      ) {
+        dispatch({
+          type: moviesStatus.SUCCESSFULL,
+          listName,
+          list: response.data.genres,
+        });
+      } else {
+        throw new Error("server error");
+      }
+      return response;
+    } catch (err) {
+      if (err.response) {
+        dispatch({
+          type: moviesStatus.SERVERERROR,
+          listName,
+          error: err,
+        });
+        return err;
+      } else if (err.request) {
+        dispatch({
+          type: moviesStatus.SERVERERROR,
+          listName,
+          error: err,
+        });
+        return err;
+      } else {
+        dispatch({
+          type: moviesStatus.SERVERERROR,
+          listName,
+          error: err,
+        });
+        return err;
+      }
+    }
+  };
+};
+
+function MovieReducer(state = movieReducerInitialState, action) {
   switch (action.type) {
     case moviesStatus.START:
       return {

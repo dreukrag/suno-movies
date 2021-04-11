@@ -1,7 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import { Ball, Carousel, Content } from "./Commons";
-import backgroundImage from "./background.png";
+import { Ball, Content } from "./Commons";
+import backgroundImage from "components/assets/background.png";
+import { Carousel, CarouselMovieCard } from "./Carousel";
+import { useSelector } from "react-redux";
 const TitleText = styled.span`
   font-family: Poppins;
   font-style: normal;
@@ -21,13 +23,18 @@ const Background = styled.div`
   background-image: url(${backgroundImage});
   height: 720px;
   background-position: center;
+  display: flex;
 `;
 
 const Heading = styled.h1`
   display: flex;
   align-items: center;
+  margin: 0;
+  margin-top: 48px;
+  margin-bottom: 25px;
 `;
 const Featured = () => {
+  const nowPlaying = useSelector(({ movies: { nowPlaying } }) => nowPlaying);
   return (
     <Background>
       <Content>
@@ -37,7 +44,11 @@ const Featured = () => {
             <TitleTextBold>Lançamentos </TitleTextBold> da semana
           </TitleText>
         </Heading>
-        <Carousel />
+        <Carousel aria-label="Lista de lançamentos">
+          {nowPlaying.map((movie) => (
+            <CarouselMovieCard {...{ movie, key: movie.id }} />
+          ))}
+        </Carousel>
       </Content>
     </Background>
   );

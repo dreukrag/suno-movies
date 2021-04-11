@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { HeaderButton, SearchButton } from "./Buttons";
 import { FlexContent } from "./Commons";
-import searchIcon from "./search-outline 1.svg";
+import searchIcon from "components/assets/search-outline 1.svg";
 const Hdr = styled.header`
   background: #212125;
   mix-blend-mode: normal;
