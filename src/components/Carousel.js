@@ -1,4 +1,4 @@
-import { useMemo, useReducer, useState } from "react";
+import { useMemo, useReducer } from "react";
 import styled from "styled-components";
 import chevron_right from "components/assets/chevron_right.svg";
 import chevron_left from "components/assets/chevron_left.svg";
@@ -64,7 +64,7 @@ export const CarouselMovieCard = ({
     () =>
       genre_ids
         .map((_id) => {
-          console.log(_id, genresListing);
+          // eslint-disable-next-line
           const genreFound = genresListing.filter(({ id }) => id == _id);
           if (genreFound.length > 0) {
             return genreFound[0].name;
@@ -176,7 +176,6 @@ export const Carousel = ({
   children = [1, 2, 3, 4, 5, 6, 7, 8, 9],
   maxItemsToDisplay = 4,
 }) => {
-  const size = useMemo(() => children.length, [children]);
   const max = useMemo(() => children.length - 1, [children]);
 
   const indexInitial = { index: 0 };
@@ -196,7 +195,7 @@ export const Carousel = ({
   const [{ index }, indxDispatch] = useReducer(indexReducer, indexInitial);
   const nextPage = () => indxDispatch("next");
   const previousPage = () => indxDispatch("prev");
-  const resetCarousel = () => indxDispatch("reset");
+  //   const resetCarousel = () => indxDispatch("reset");
   return (
     <CarouselMain>
       <CarouselWrapper>
