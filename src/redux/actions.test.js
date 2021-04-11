@@ -12,8 +12,6 @@ describe("MovieReducer actions should call the desired API", () => {
     const url = "fake_url";
     const error = await store.dispatch(getList(listName, url));
 
-    console.log(error)
-
     expect(error.config.url).toBe(url);
 
     expect(spy).toHaveBeenCalled();
