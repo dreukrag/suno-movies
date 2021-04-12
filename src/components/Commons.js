@@ -97,6 +97,12 @@ const SpinnerStyle = styled.svg`
   }
 `;
 
+/**
+ * Adapted from:
+ * css svg spinner
+ * Fabio Ottaviani
+ * https://codepen.io/supah/pen/BjYLdW
+ */
 export const Spinner = () => (
   <SpinnerStyle viewBox="0 0 50 50">
     <circle
