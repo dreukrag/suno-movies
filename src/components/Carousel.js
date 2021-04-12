@@ -4,6 +4,7 @@ import chevron_right from "components/assets/chevron_right.svg";
 import chevron_left from "components/assets/chevron_left.svg";
 import { Colors, Star } from "components/Commons";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 const MovieCardWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -56,7 +57,7 @@ const Vote = styled(Ellipsis)`
 
 // TO-DO: Loader while imaging is loading.
 export const CarouselMovieCard = ({
-  movie: { title, vote_average, poster_path, genre_ids },
+  movie: { title, vote_average, poster_path, genre_ids, id },
 }) => {
   const genresListing = useSelector(({ movies: { genres } }) => genres);
 
@@ -76,20 +77,22 @@ export const CarouselMovieCard = ({
   );
 
   return (
-    <MovieCardWrapper>
-      <Poster
-        src={`https://image.tmdb.org/t/p/original/${poster_path}`}
-        alt={`Poster do filme: ${title}`}
-      />
-      <div>
-        <Title>{title}</Title>
-        <Genre>{genres}</Genre>
-        <Vote>
-          <Star style={{ marginRight: "6px" }} />
-          {vote_average}
-        </Vote>
-      </div>
-    </MovieCardWrapper>
+    <Link to={`/movie/${id}`}>
+      <MovieCardWrapper>
+        <Poster
+          src={`https://image.tmdb.org/t/p/original/${poster_path}`}
+          alt={`Poster do filme: ${title}`}
+        />
+        <div>
+          <Title>{title}</Title>
+          <Genre>{genres}</Genre>
+          <Vote>
+            <Star style={{ marginRight: "6px" }} />
+            {vote_average}
+          </Vote>
+        </div>
+      </MovieCardWrapper>
+    </Link>
   );
 };
 
@@ -120,6 +123,10 @@ const Item = styled.div`
   width: calc(100% / ${({ maxItemsToDisplay }) => maxItemsToDisplay});
   padding: 12px;
   box-sizing: border-box;
+  :hover {
+    transform: translateY(-25px);
+    transition: ease-in-out 0.125s;
+  }
 `;
 
 const CarouselButton = styled.button`
