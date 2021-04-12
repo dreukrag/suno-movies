@@ -61,13 +61,17 @@ const Header = (props) => {
   return (
     <Hdr>
       <FlexContent>
-        <h2>
-          <HdrText>
-            Suno <HdrBright>Movies</HdrBright>
-          </HdrText>
-        </h2>
+        <Link to="/home">
+          <h2>
+            <HdrText>
+              Suno <HdrBright>Movies</HdrBright>
+            </HdrText>
+          </h2>
+        </Link>
         <ButtonWrapper>
-          <HeaderButton>Início</HeaderButton>
+          <Link to="/home">
+            <HeaderButton>Início</HeaderButton>
+          </Link>
           <Link to="/home#catalogue">
             <HeaderButton onClick={scroll}>Catálogo</HeaderButton>
           </Link>

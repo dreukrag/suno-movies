@@ -123,9 +123,9 @@ const Item = styled.div`
   width: calc(100% / ${({ maxItemsToDisplay }) => maxItemsToDisplay});
   padding: 12px;
   box-sizing: border-box;
+  transition: ease-in-out 0.25s;
   :hover {
-    transform: translateY(-25px);
-    transition: ease-in-out 0.125s;
+    transform: translateY(-20px);
   }
 `;
 
