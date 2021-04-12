@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { HeaderButton, SearchButton } from "./Buttons";
 import { Colors, FlexContent } from "./Commons";
 import searchIcon from "components/assets/search-outline 1.svg";
+import { Link } from "react-router-dom";
 const Hdr = styled.header`
   background: ${Colors.dark};
   mix-blend-mode: normal;
@@ -47,15 +48,15 @@ const ButtonWrapper = styled.div`
 `;
 
 const Header = (props) => {
-  const scroll = useCallback(
-    () =>
-      document.getElementById("subheader").scrollIntoView({
+  const scroll = useCallback(() => {
+    const element = document.getElementById("catalogue");
+    if (element)
+      element.scrollIntoView({
         behavior: "smooth",
         block: "start",
         inline: "nearest",
-      }),
-    []
-  );
+      });
+  }, []);
 
   return (
     <Hdr>
@@ -67,7 +68,9 @@ const Header = (props) => {
         </h2>
         <ButtonWrapper>
           <HeaderButton>Início</HeaderButton>
-          <HeaderButton onClick={scroll}>Catálogo</HeaderButton>
+          <Link to="/home#catalogue">
+            <HeaderButton onClick={scroll}>Catálogo</HeaderButton>
+          </Link>
           <SearchButton>
             <img src={searchIcon} alt="search" />
           </SearchButton>

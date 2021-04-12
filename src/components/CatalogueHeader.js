@@ -21,8 +21,8 @@ const SubHeading = styled(Heading)`
   margin: 0;
 `;
 
-const SubHeader = (props) => (
-  <Hdr id="subheader">
+const CatalogueHeader = (props) => (
+  <Hdr id="catalogue">
     <FlexContent>
       <SubHeading>
         <Ball style={{ marginRight: "6px" }} />
@@ -34,4 +34,4 @@ const SubHeader = (props) => (
   </Hdr>
 );
 
-export default SubHeader;
+export default CatalogueHeader;

@@ -1,10 +1,11 @@
 import React, { useCallback, useMemo, useState } from "react";
-import SubHeader from "components/SubHeader";
+import CatalogueHeader from "components/CatalogueHeader";
 import { Colors, Content, Loader, Star } from "./Commons";
 import styled from "styled-components";
 import { MainButton } from "./Buttons";
 import { useDispatch, useSelector } from "react-redux";
 import { moviesStatus } from "redux/MovieReducer";
+import { Link } from "react-router-dom";
 
 const CatalogueListItemWrapper = styled.button`
   display: flex;
@@ -86,7 +87,7 @@ const Vote = styled(Ellipsis)`
 `;
 
 const CatalogueListItem = ({
-  movie: { title, poster_path, genre_ids, vote_average, overview },
+  movie: { title, poster_path, genre_ids, vote_average, overview, id },
 }) => {
   const genresListing = useSelector(({ movies: { genres } }) => genres);
 
@@ -105,21 +106,23 @@ const CatalogueListItem = ({
     [genresListing, genre_ids]
   );
   return (
-    <CatalogueListItemWrapper aria-label={`Selecionar filme: ${title}`}>
-      <Poster
-        src={`https://image.tmdb.org/t/p/original/${poster_path}`}
-        alt={`Poster do filme: ${title}`}
-      />
-      <div>
-        <Title>{title}</Title>
-        <Genre>{genres}</Genre>
-        <Vote>
-          <Star style={{ marginRight: "6px" }} />
-          {vote_average}
-        </Vote>
-        <Overview>{overview}</Overview>
-      </div>
-    </CatalogueListItemWrapper>
+    <Link to={`/movie/${id}`}>
+      <CatalogueListItemWrapper aria-label={`Selecionar filme: ${title}`}>
+        <Poster
+          src={`https://image.tmdb.org/t/p/original/${poster_path}`}
+          alt={`Poster do filme: ${title}`}
+        />
+        <div>
+          <Title>{title}</Title>
+          <Genre>{genres}</Genre>
+          <Vote>
+            <Star style={{ marginRight: "6px" }} />
+            {vote_average}
+          </Vote>
+          <Overview>{overview}</Overview>
+        </div>
+      </CatalogueListItemWrapper>
+    </Link>
   );
 };
 
@@ -201,7 +204,7 @@ const Catalogue = () => {
 
   return (
     <>
-      <SubHeader />
+      <CatalogueHeader />
       <CatalogueWrapper>
         <Content>
           <Row>
