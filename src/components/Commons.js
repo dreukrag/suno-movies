@@ -54,11 +54,70 @@ export const Ball = styled.div`
   display: inline-block;
 `;
 
-export const Star = styled.div`
+export const Star = styled.i`
   background-image: url(${star});
-  width: 16px;
-  height: 16px;
+  width: 18px;
+  height: 18px;
   display: inline-block;
   background-repeat: no-repeat;
   background-position: center;
 `;
+
+const SpinnerStyle = styled.svg`
+  animation: rotate 2s linear infinite;
+  width: 50px;
+  height: 50px;
+  margin: 0 calc(50% - 25px);
+
+  & .path {
+    stroke: ${Colors.pink};
+    stroke-linecap: round;
+    animation: dash 1.5s ease-in-out infinite;
+  }
+
+  @keyframes rotate {
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes dash {
+    0% {
+      stroke-dasharray: 1, 150;
+      stroke-dashoffset: 0;
+    }
+    50% {
+      stroke-dasharray: 90, 150;
+      stroke-dashoffset: -35;
+    }
+    100% {
+      stroke-dasharray: 90, 150;
+      stroke-dashoffset: -124;
+    }
+  }
+`;
+
+export const Spinner = () => (
+  <SpinnerStyle viewBox="0 0 50 50">
+    <circle
+      className="path"
+      cx="25"
+      cy="25"
+      r="20"
+      fill="none"
+      strokeWidth="5"
+    ></circle>
+  </SpinnerStyle>
+);
+
+const LoaderText = styled.p`
+  text-align: center;
+  color: ${Colors.pink};
+`;
+
+export const Loader = () => (
+  <div>
+    <Spinner />
+    <LoaderText>Carregando</LoaderText>
+  </div>
+);
